@@ -199,25 +199,58 @@
               </article>
             </a>
           </li>
-
-          <li>
-            <a id="twaalf" href="projects/fotografie.html">
-              <article>
-                <h4>Fotografie</h4>
-                <h5>Fotografie</h5>
-                <h6>Privé</h6>
-                <p>
-                  Ik vind het ook enorm leuk om te fotograferen, van de
-                  omgeving, de natuur tot mijn eigen katten :)
-                </p>
-              </article>
-            </a>
-          </li>
         </ul>
       </section>
       <section id="contact">
         <h3>Contact</h3>
-        <form action=""></form>
+        <?php if ($_POST && ($suspect || isset($errors['mailfail']))) : ?>
+        <p class="warning">Sorry, jouw mail kon niet verstuurd worden.</p>
+        <?php elseif ($errors || $missing) : ?>
+        <p class="warning">Niet alle velden zijn correct ingevuld</p>
+        <?php endif; ?>
+        <form id="contact" method="post" action="<?= $_SERVER['PHP_SELF']; ?>">
+            <p>
+                <label for="name">Naam:
+                    <?php if ($missing && in_array('name', $missing)) : ?>
+                    <span class="warning">Vul hier uw naam in</span>
+                    <?php endif; ?>
+                </label>
+                <input type="text" name="name" id="name" <?php
+        if ($errors || $missing) {
+            echo 'value="' . htmlentities($name) . '"';
+        }
+        ?>>
+            </p>
+            <p>
+                <label for="email">Email:
+                    <?php if ($missing && in_array('email', $missing)) : ?>
+                    <span class="warning">Vul hier uw e-mail in</span>
+                    <?php elseif (isset($errors['email'])) : ?>
+                    <span class="warning">Ongeldig e-mail adres</span>
+                    <?php endif; ?>
+                </label>
+                <input type="email" name="email" id="email" <?php
+        if ($errors || $missing) {
+            echo 'value="' . htmlentities($email) . '"';
+        }
+        ?>>
+            </p>
+            <p>
+                <label for="comments">Waarmee kan ik je helpen?
+                    <?php if ($missing && in_array('comments', $missing)) : ?>
+                    <span class="warning">Je bent dit vergeten in te vullen!</span>
+                    <?php endif; ?>
+                </label>
+                <textarea name="comments" id="comments" rows="5"><?php
+          if ($errors || $missing) {
+              echo htmlentities($comments);
+          }
+          ?></textarea>
+            </p>
+            <button type="submit" name="send" id="send">
+                verstuur
+            </button>
+        </form>
       </section>
     </main>
     <footer></footer>
