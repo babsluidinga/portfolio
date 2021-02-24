@@ -494,15 +494,15 @@ main section:nth-of-type(3) ul li:nth-of-type(6) a:hover{
   }
   div.blob-1{
     left: -5em;
-    top: 2em;
+    top: 5em;
   }
   div.blob-2{
     left: -5em !important;
-    top: 15em;
+    top: 20em;
   }
   div.blob-3{
     left:-5em !important;
-    top: 40em;
+    top: 45em;
     width:25em;
     height: 25em;
   }
