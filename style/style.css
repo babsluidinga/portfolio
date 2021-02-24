@@ -226,9 +226,14 @@ main section:nth-of-type(3){
   padding-top: 3em;
 }
 
+main section:nth-of-type(3) h3{
+  width: 100%;
+  text-align: center;
+}
+
 main section:nth-of-type(3) ul{
   margin: 3em auto 0;
-
+  flex-wrap: wrap;
 }
 main section:nth-of-type(3) ul a{
   width:3em;
@@ -460,5 +465,47 @@ main section:nth-of-type(3) ul li:nth-of-type(6) a:hover{
 
   80% {
     border-radius: 40% 60% 42% 58% / 41% 51% 49% 59%;
+  }
+}
+
+/* responsive */
+
+@media screen and (max-width: 650px){
+  h1{
+   font-size: 3em; 
+  }
+  h2{
+    font-size: 2em;
+  }
+  h3{
+    font-size: 2em;
+  }
+
+  body.detail h1{
+    font-size: 3em;
+    margin-top: -1em;
+  }
+  ul{
+    margin: 2em 0 ;
+  }
+  div.blob{
+    transform: scale(.6, .6) !important ;
+  }
+  div.blob-1{
+    left: -5em;
+    top: 2em;
+  }
+  div.blob-2{
+    left: -5em !important;
+    top: 15em;
+  }
+  div.blob-3{
+    left:-5em !important;
+    top: 40em;
+    width:25em;
+    height: 25em;
+  }
+  a article{
+    top: 0;
   }
 }
